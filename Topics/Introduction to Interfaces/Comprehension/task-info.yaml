@@ -1,0 +1,22 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: "A certain type of class, which has different ways of sharing some properties."
+  - text: Another name for an abstract class.
+  - text: "A programming pattern similar to a contract, which later might have different\
+    \ implementations."
+  - text: UI of a program or application.
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |
+      // You can experiment here, it won’t be checked
+      
+      fun main(args: Array<String>) {
+        // put your code here
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/18223#comment
+status: Solved
+record: -1
+local_check: false

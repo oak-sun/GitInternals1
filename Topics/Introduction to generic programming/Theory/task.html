@@ -1,0 +1,123 @@
+<h2>Introduction to generic programming</h2>
+<div class="step-text">
+<p>Sometimes methods and classes that we use do not depend on the data on which they operate. For example, arrays can store values of different types: <code class="language-kotlin">String</code>, <code class="language-kotlin">Int</code>, <code class="language-kotlin">Char</code>, etc. However, the algorithm of finding an element in an array doesn't depend on the type of values the array stores.</p>
+<p>For these cases, Kotlin supports <strong><a class="theory-lookup not-relevant" href="/learn/step/14698" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, generic programming is a way of writing more abstract and reusable code by using type parameters in a class or function. | A generic class is declared with one or more type parameters in angle brackets after the class name, and these type parameters can be used in the class body for field types, method arguments, and return values. The class itself does not depend on the type it operates on; the type is relevant only when creating an instance of the class. Generic programming allows for versatility and the creation of reusable code.">generic programming</a></strong>. Generics represent parameterized types. <a class="theory-lookup not-relevant" href="/learn/step/14698" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, a generic method is a method that is parameterized over types, allowing it to operate on different data types while using the same code. | Generic methods, like generic classes, enable more abstract and reusable code by postponing the determination of the type until the method is invoked. This means that a single generic method can handle various data types in a unified way. For instance, a generic sorting method can accept a list of different types (e.g., integers, strings, or custom objects) and sort them accordingly, without the need for separate methods for each data type.">Generic methods</a> and classes can handle different types in the same general way. The type should be determined when you create an instance of the class or invoke a method. Generic programming allows writing more abstract and reusable code. Let's take a closer look at Generics!</p>
+<h5 id="generic-classes">Generic classes</h5>
+<p>A <a class="theory-lookup not-relevant" href="/learn/step/14698" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, a generic class is a class that is parameterized over a type, allowing you to create reusable and flexible code. | To declare a generic class, you specify the type parameter inside angle brackets after the class name. This type parameter can represent any type, and the class declaration does not depend on the specific type. This means that the same class can be used with different data types, making the code more abstract and reusable. The type parameter is determined when you create an instance of the class or invoke a method.">generic class</a> represents a class that is parameterized over types. To declare such a class, we should specify the <a class="theory-lookup not-relevant" href="/learn/step/14698" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, a type parameter is a named type that is used in a class, interface, or function declaration to make it work with different data types. | Type parameters are often used in generic programming, which allows for versatility and reusability of code. They are typically named using a single letter, such as T, E, K, or V, to distinguish them from regular class names. When creating an instance of a generic class, you need to provide a concrete type as a type argument, which can be inferred by the compiler if it's a standard type. Once the type argument is specified, you can invoke methods of the class using the provided type. If the class has multiple type parameters, you should specify them in order. Type parameters can be used as ordinary types inside the class body, such as a type for a field, constructor argument type, instance method argument, or return type.">type parameter</a> in angle brackets after the class name. Let's take a look at the example below.</p>
+<p>Here you can see a class with a single type parameter named <code class="language-kotlin">T</code>. <code class="language-kotlin">T</code> represents "some type", and the declaration of our class doesn't depend on this type. </p>
+<pre><code class="language-kotlin">class Box&lt;T&gt;(t: T) {
+
+    /* Constructor accepts
+    * a variable of "some type"
+    * and sets it to a field */
+
+    var value = t  // A field of "some type"
+        get() = field
+        set(value) {
+            field = value;
+        }
+
+}</code></pre>
+<p>Here we use special methods of a class called <strong>getter</strong> and <strong>setter</strong>. They are optional and used to manage the access to properties of the class. You can learn about them <a href="https://kotlinlang.org/docs/properties.html#getters-and-setters" rel="noopener noreferrer nofollow" target="_blank">here</a>.</p>
+<p>After the class has been declared, the type parameter can be used as an ordinary type inside the <a class="theory-lookup not-relevant" href="/learn/step/14698" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, a class body refers to the section of a class declaration that contains the class members, such as properties, methods, and inner classes. | It is enclosed in curly braces `{}` and appears immediately following the class name and any visibility modifiers. The class body can be empty, as in the case of a marker interface, or it can contain a variety of member declarations.">class body</a>. In the example above, the type parameter <code class="language-kotlin">T</code> is used as:</p>
+<ul><li><p>a type for a field;</p></li><li><p>a<em> </em>constructor argument type;</p></li><li><p>an<em> </em>instance method argument and a <a class="theory-lookup not-relevant" href="/learn/step/14698" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, a return type is the type of value that a function returns. | If a function does not return a value, its return type is denoted as `Unit`, which is a subtype of every known type in Kotlin. This is useful in situations where a function cannot return a value, such as when calculating a percentage with a denominator of zero. In such cases, returning `Nothing` indicates that the function will not return a value, rather than returning a null or other arbitrary value.">return type</a>.</p></li></ul>
+<h5 id="generic-and-several-type-parameters">Generic and several type parameters</h5>
+<p>In many situations, it is much more convenient to have several parameters in a class, which can be of arbitrary type. Kotlin allows us to define not only one parameter of arbitrary type but also two, three, etc. In this case, you can specify several type parameters, separating them with a comma:</p>
+<pre><code class="language-kotlin">class Three&lt;T, U, V&gt;(var first: T, var second: U, var third: V)</code></pre>
+<p>Let's see where this skill can be useful. </p>
+<p>We can create a class <code class="language-kotlin">Pair</code> that will store two parameters <code class="language-kotlin">first</code> and <code class="language-kotlin">second</code> of arbitrary type and methods that allow processing these values separately or together.</p>
+<pre><code class="language-kotlin">class Pair&lt;T, P&gt;(var first: T, var second: P) {
+    fun changeFirst(newValue: T) {
+        first = newValue
+    }
+
+    fun changeSecond(newValue: P) {
+        second = newValue
+    }
+
+    fun printData() {
+        println("Values:")
+        println("first = $first")
+        println("second = $second")
+    }
+}</code></pre>
+<p>The example of how we can work with this class:</p>
+<pre><code class="language-kotlin">val nameLastname: Pair&lt;String, String&gt; = Pair("John", "Smith")
+val nameAge: Pair&lt;String, Int&gt; = Pair("Kite", 18)
+    
+nameLastname.changeFirst("John")
+nameLastname.changeSecond("Smith")
+   
+nameAge.changeFirst("Kate")
+nameAge.changeSecond(19)
+   
+nameLastname.printData()
+nameAge.printData()</code></pre>
+<p>The result:</p>
+<pre><code class="language-no-highlight">Values:
+first = John
+second = Smith
+Values:
+first = Kate
+second = 19</code></pre>
+<h5 id="naming-convention-for-type-parameters">Naming convention for type parameters</h5>
+<p>The type parameter is named with a single letter according to the convention in order to distinguish it from an ordinary <a class="theory-lookup not-relevant" href="/learn/step/14698" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, a class name is a unique identifier for a class, which is used to declare a new class or create an object of that class. | It is specified in the class header, followed by the class body enclosed in curly braces. The class name can be used to access class members, such as properties or methods, by using a dot and the property or method name. A class name can also be used to create an instance of the class using the object creation syntax, followed by empty parentheses. Additionally, a class name can be used to declare a companion object, which allows for storing data and implementing class-wide functionality.">class name</a>.</p>
+<p>The most commonly used type parameter names are:</p>
+<ul><li><p><code class="language-kotlin">T</code> – Type;</p></li><li><p><code class="language-kotlin">S</code>, <code class="language-kotlin">U</code>, <code class="language-kotlin">V</code>, etc. – 2nd, 3rd, 4th types;</p></li><li><p><code class="language-kotlin">E</code> – Element (often used by different collections);</p></li><li><p><code class="language-kotlin">K</code> – Key;</p></li><li><p><code class="language-kotlin">V</code> – Value;</p></li><li><p><code class="language-kotlin">N</code> – Number.</p></li></ul>
+<h5 id="creating-objects-of-generic-classes">Creating objects of generic classes</h5>
+<p>When we create an instance of a generic class, we need to provide a concrete type as a type argument:</p>
+<pre><code class="language-kotlin">val obj1: Box&lt;Int&gt; = Box&lt;Int&gt;(123)
+val obj2: Box&lt;String&gt; = Box&lt;String&gt;("abc")</code></pre>
+<p>But if the type is a standard one like <code class="language-kotlin">Int</code>, <code class="language-kotlin">String</code>, <code class="language-kotlin">Double</code>, etc., you can omit the type argument, as the compiler infers it:</p>
+<pre><code class="language-kotlin">val obj1 = Box(123)
+val obj2 = Box("abc")</code></pre>
+<p>After we have created an object of the generic class and specified the type argument, we can invoke methods of the class:</p>
+<pre><code class="language-kotlin">println(obj1.showObjectInBox()) // 123
+println(obj2.showObjectInBox()) // "abc"</code></pre>
+<p>If the class has more than one type parameter, we should specify all of them:</p>
+<pre><code class="language-kotlin">val obj = Three&lt;String, Int, Int&gt;("abc", 1, 2)</code></pre>
+<h5 id="creating-your-own-collection">Creating your own collection</h5>
+<p>Let's create a generic class called <code class="language-kotlin">RandomCollection</code>. It stores a list of items of some type, a constructor to set the items, and a method to get an element of the list by its index. The collection we are creating is <a class="theory-lookup not-relevant" href="/learn/step/14698" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, an immutable is a type of object or variable that, once initialized, cannot be changed. | This helps ensure the integrity of data and prevents unintended modifications. For example, a list of pages in a book may be an immutable collection, where the content cannot be altered over time. In contrast, a mutable collection allows for changes to be made, such as adding, removing, or updating stored items. Immutable variables, declared using the `val` keyword, are particularly useful for exposing internal state in a safe and controlled manner, as they cannot be modified by external code.">immutable</a>. </p>
+<pre><code class="language-kotlin">class RandomCollection&lt;T&gt;(val items: List&lt;T&gt;) {
+    fun get(index: Int): T {
+        return items[index]
+    }
+
+    fun length(): Int {
+        return items.size
+    }
+}</code></pre>
+<p>This class has two methods: <code class="language-kotlin">get(index:Int)</code>, which has <code class="language-kotlin">T</code> as a return type, and <code class="language-kotlin">length()</code>, which doesn't use the parameter type.</p>
+<p>The following code creates an instance of <code class="language-kotlin">RandomCollection</code> for storing four elements in it.</p>
+<pre><code class="language-kotlin">var nums = RandomCollection(listOf(1, 2, 3, 4))
+for (i in 0 until nums.length()) {
+       print("${nums.get(i)} ") // "1 2 3 4 "
+}</code></pre>
+<p>You can parametrize <code class="language-kotlin">RandomCollection</code> with any <a class="theory-lookup not-relevant" href="/learn/step/14698" rel="noopener noreferrer nofollow" target="_blank" title="In Kotlin, a basic type is a fundamental building block for data manipulation within the language. | They can be separated into several groups according to their meaning, and the types from the same group operate similarly but have different sizes and thus represent different ranges of value. Kotlin provides several types for integer and fractional numbers. Integer numbers (e.g. int, long, short, byte) are represented by the following four types, from the largest to the smallest. These types have different sizes and may represent different ranges of value. The integer type range can be calculated as a - (2^(n-1)) to (2^(n-1)-1), where n is the number of bits in the type. Basic types are relative terms, so a given type doesn't have to be one or the other. In this case, a subtype of the type, such as Exception and Error, deals with exceptional events inside an application.">Basic types</a>, standard classes, and your own classes.</p>
+<h5 id="getting-type-of-a-variable">Getting type of a variable</h5>
+<p>Since Kotlin 1.6, you can write the following code to get a variable's type:</p>
+<pre><code class="language-kotlin">val myType = typeOf&lt;Int&gt;()</code></pre>
+<p>It will return a value of type <code class="language-kotlin">KType</code>, which represents a type.</p>
+<p>To use <code class="language-kotlin">typeOf</code>, you should add the dependency on <code class="language-kotlin">kotlin-reflect</code> in a Gradle or Maven project.</p>
+<p>In Gradle:</p>
+<pre><code class="language-kotlin">dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.21")
+}</code></pre>
+<p>In Maven: </p>
+<pre><code class="language-kotlin">&lt;dependencies&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;org.jetbrains.kotlin&lt;/groupId&gt;
+      &lt;artifactId&gt;kotlin-reflect&lt;/artifactId&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
+<p>After that, make <code class="language-kotlin">kotlin.reflect.typeOf</code> import. For example:</p>
+<pre><code class="language-kotlin">import kotlin.reflect.typeOf
+
+fun main() {
+    val fromExplicitType = typeOf&lt;Int&gt;()
+    println(fromExplicitType)
+}</code></pre>
+<p>The output will be <code class="language-kotlin">kotlin.Int</code>.</p>
+<h5 id="conclusion">Conclusion</h5>
+<p>A generic class can declare one or more type parameters and then use them inside the class body as types of fields, method and constructor arguments, and return values. The class doesn't depend on the type which it operates; the type matters only when we create an instance of such a class. Generic programming is good for versatility and allows us to write reusable code. </p>
+</div>

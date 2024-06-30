@@ -1,0 +1,22 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: It has completed the task and is going to terminate soon
+  - text: It is ready to run but not executed yet
+  - text: "It is executing in the JVM, but it may be waiting for resources from the\
+    \ OS – for example, from the processor"
+  - text: It implements the Runnable interface
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |
+      // You can experiment here, it won’t be checked
+      
+      fun main(args: Array<String>) {
+        // put your code here
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20165#comment
+status: Solved
+record: -1
+local_check: false

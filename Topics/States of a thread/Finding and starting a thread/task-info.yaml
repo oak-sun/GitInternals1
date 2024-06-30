@@ -1,0 +1,14 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    highlight_level: NONE
+    text: |-
+      fun findAndStartThread(threads: List<Thread>) {
+          // implement this function
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20163#comment
+status: Unchecked
+record: -1
+submission_language: kotlin

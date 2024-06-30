@@ -1,0 +1,29 @@
+type: code
+custom_name: The sequence 1 2 2 3 3 3 ...
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |-
+      fun main() {
+          // put your code here
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4668#comment
+status: Failed
+feedback:
+  message: |
+    Failed test #1 of 12. Wrong answer
+
+    This is a sample test from the problem statement!
+
+    Test input:
+    7
+    Correct output:
+    1 2 2 3 3 3 4
+
+    Your code output:
+    1 2 2 3 3 3 4
+    2 4 6 8 10
+  time: "Sun, 19 May 2024 15:16:47 UTC"
+record: -1
+submission_language: kotlin

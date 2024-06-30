@@ -1,0 +1,15 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: "true"
+  - text: "false"
+  - text: "[]"
+  - text: Exception
+files:
+  - name: src/Main.kt
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/24879#comment
+status: Solved
+record: -1
+local_check: false

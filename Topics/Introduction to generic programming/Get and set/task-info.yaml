@@ -1,0 +1,21 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    highlight_level: NONE
+    text: |-
+      data class QuizBox<T>(val hiddenItem: T) {
+          var isChanged = false
+          var item: T = hiddenItem
+              // implement methods
+              get() {}
+              set(value) {}
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/14705#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Tue, 21 May 2024 15:59:44 UTC"
+record: -1
+submission_language: kotlin

@@ -1,0 +1,14 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    highlight_level: NONE
+    text: |-
+      fun startRunnables(runnables: Array<Runnable>) {
+          // implement the method
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/16017#comment
+status: Unchecked
+record: -1
+submission_language: kotlin

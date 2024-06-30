@@ -1,0 +1,21 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |-
+      import kotlin.math.*
+      
+      fun main() {
+          val (width, height) = readLine()!!.split(' ').map(String::toDouble)
+      
+      
+      
+      
+      
+      
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/47013#comment
+status: Unchecked
+record: -1
+submission_language: kotlin

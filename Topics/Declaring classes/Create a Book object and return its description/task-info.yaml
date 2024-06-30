@@ -1,0 +1,23 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |-
+      import java.util.Scanner
+      
+      fun main(args: Array<String>) {
+          val input = Scanner(System.`in`)
+          val title = input.nextLine()
+          val author = input.nextLine()
+          val pages = input.nextInt()
+      
+          // Student's code here
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/41180#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Thu, 06 Jun 2024 11:39:09 UTC"
+record: -1
+submission_language: kotlin

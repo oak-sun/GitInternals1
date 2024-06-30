@@ -1,0 +1,14 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    highlight_level: NONE
+    text: |-
+      fun printNameOfTerminatedThread(threads: List<Thread>) {
+          // implement the function
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20160#comment
+status: Failed
+record: -1
+submission_language: kotlin

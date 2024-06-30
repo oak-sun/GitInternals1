@@ -1,0 +1,46 @@
+type: edu
+files:
+  - name: src/gitinternals/GitInternals.kt
+    visible: true
+    learner_created: false
+  - name: test/gitone/objects/0e/ee6a98471a350b2c2316313114185ecaf82f0e
+    visible: false
+    is_binary: true
+    learner_created: false
+  - name: test/gitone/objects/49/0f96725348e92770d3c6bab9ec532564b7ebe0
+    visible: false
+    is_binary: true
+    learner_created: false
+  - name: test/gitone/objects/61/8383db6d7ee3bd2e97b871205f113b6a3ba854
+    visible: false
+    is_binary: true
+    learner_created: false
+  - name: test/gitone/objects/a7/b882bbf2db5d90287e9affc7e6f3b3c740b327
+    visible: false
+    is_binary: true
+    learner_created: false
+  - name: test/gitone/objects/ad/3a818dc87b9940935b24a5aa93fac00f086bf9
+    visible: false
+    is_binary: true
+    learner_created: false
+  - name: test/gitone/objects/fb/043556c251cb450a0d55e4ceb1ff35e12029c3
+    visible: false
+    is_binary: true
+    learner_created: false
+  - name: test/GitInternalsTest.java
+    visible: false
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/9838#comment
+status: Failed
+feedback:
+  message: "Exception in test #1\n\njava.io.FileNotFoundException: 0eee6a98471a350b2c2316313114185ecaf82f0e/objects/te/st/gitone\
+    \ (Нет такого файла или каталога)\n\tat java.base/java.io.FileInputStream.open0(Native\
+    \ Method)\n\tat java.base/java.io.FileInputStream.open(FileInputStream.java:216)\n\
+    \tat java.base/java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:157)\n\
+    \tat gitinternals.MainKt.main(GitInternals.kt:8)\n\tat gitinternals.MainKt.main(GitInternals.kt)\n\
+    \nPlease find below the output of your program during this failed test.\nNote\
+    \ that the &#39;&gt;&#39; character indicates the beginning of the input line.\n\
+    \n---\n\nEnter git object hash:\n&gt; test/gitone\nEnter .git directory location:\n\
+    &gt; 0eee6a98471a350b2c2316313114185ecaf82f0e"
+  time: "Tue, 25 Jun 2024 08:57:07 UTC"
+record: 2

@@ -1,0 +1,22 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |-
+      import java.util.*
+      import kotlin.math.sqrt
+      
+      fun main(args: Array<String>) {
+          val scanner = Scanner(System.`in`)
+          val number = scanner.nextInt()
+      
+          // Write your code here
+      }'
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/44678#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Tue, 21 May 2024 18:06:31 UTC"
+record: -1
+submission_language: kotlin
